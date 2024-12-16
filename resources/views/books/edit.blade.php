@@ -20,10 +20,10 @@
         <label for="genre">Genero</label>
         {{-- <input type="text" name="genre" id="genre" value="{{ $book->genre }}" required> --}}
         <select name="genre" id="genre">
-            <option value="Terror">Terror</option>
-            <option value="Ficcion">Ficcion</option>
-            <option value="Realismo">Realismo</option>
-            <option value="Infantil">Infantil</option>
+            <option value="Terror"{{ $book->genre == 'Terror' ? 'selected' : '' }}>Terror</option>
+            <option value="Ficcion"{{ $book->genre == 'Ficcion' ? 'selected' : '' }}>Ficcion</option>
+            <option value="Realismo"{{ $book->genre == 'Realismo' ? 'selected' : '' }}>Realismo</option>
+            <option value="Infantil"{{ $book->genre == 'Infantil' ? 'selected' : '' }}>Infantil</option>
         </select>
 
         <button type="submit">Guardar Cambio</button>

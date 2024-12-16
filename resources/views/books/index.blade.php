@@ -23,15 +23,21 @@
     <div class="row">
         <div class="col-3">
             <form action="{{route('books.store')}}" method="post">
-                @csrf 
+                @csrf
                 <label for="title"><strong>Titulo del libro:</strong></label>
                 <input type="text" class="form-control" name="title" id="title">
                 <br>
-                <label for="published_at"><strong>Fecha de publicación:</strong></label> 
+                <label for="published_at"><strong>Fecha de publicación:</strong></label>
                 <input type="date" class="form-control" name="published_at" id="published_at">
                 <br>
-                <label for="genre"><strong>Genero:</strong></label> 
-                <input type="text" class="form-control" name="genre" id="genre">
+                <label for="genre"><strong>Genero:</strong></label>
+                {{-- <input type="text" class="form-control" name="genre" id="genre"> --}}
+                <select name="genre" id="genre">
+                    <option value="Terror">Terror</option>
+                    <option value="Ficcion">Ficcion</option>
+                    <option value="Realismo">Realismo</option>
+                    <option value="Infantil">Infantil</option>
+                </select>
                 <br>
                 <button type="submit">Guardar</button>
             </form>
@@ -51,7 +57,7 @@
                 @foreach ($books as $book)
                 <tr>
                     <td><strong>{{ $book->id }}</strong></td>
-                    <td>{{ $book->title }}</td>         
+                    <td>{{ $book->title }}</td>
                     <td>{{ $book->published_at }}</td>
                     <td>{{ $book->genre }}</td>
                     <td>

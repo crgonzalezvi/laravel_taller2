@@ -19,6 +19,12 @@
 
         <label for="genre">Genero</label>
         {{-- <input type="text" name="genre" id="genre" value="{{ $book->genre }}" required> --}}
+        <select name="genre" id="genre">
+            <option value="Terror">Terror</option>
+            <option value="Ficcion">Ficcion</option>
+            <option value="Realismo">Realismo</option>
+            <option value="Infantil">Infantil</option>
+        </select>
 
         <button type="submit">Guardar Cambio</button>
     </form>

@@ -14,7 +14,8 @@ use App\Http\Controllers\AuthorController; //Importacion de controlador
 |
 */
 
-Route::get('/authors',[AuthorController::class, 'index'])->name('categories.index'); 
-Route::post('/authors',[AuthorController::class, 'store'])->name('authors.store'); 
-Route::delete('/authors/{id}', [AuthorController::class,'destroy'])->name('authors.destroy');
-Route::get('/authors/{id}', [AuthorController::class,'edit'])->name('authors.edit');
+Route::get('authors',[AuthorController::class, 'index'])->name('authors.index');
+Route::post('authors',[AuthorController::class, 'store'])->name('authors.store');
+Route::get('authors/{id}/edit', [AuthorController::class, 'edit'])->name('authors.edit');
+Route::put('authors/{id}', [AuthorController::class, 'update'])->name('authors.update');
+Route::delete('authors/{id}', [AuthorController::class, 'destroy'])->name('authors.destroy');

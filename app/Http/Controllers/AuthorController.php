@@ -13,8 +13,8 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        $authors = Author::all();
-        return view('authors.index', compact('authors')); //compact('authors') -> los datos creados en la variable
+        $authors=Author::all(); //ELOQUENT
+        return view('authors.index', compact('authors'));
     }
 
     /**
@@ -30,10 +30,10 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        $author = new Author();
-        $author->name = $request->name;
-        $author->nationality = $request->nationality;
-        $author->birth_date = $request->birth_date;
+        $author=new Author();
+        $author->name=$request->name;
+        $author->nationality=$request->nationality;
+        $author->birth_date=$request->birth_date;
         $author->save();
         return redirect()->route('authors.index');
 
@@ -52,7 +52,8 @@ class AuthorController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $author = Author::findOrFail($id);
+        return view('authors.edit', compact('author'));
     }
 
     /**
@@ -60,7 +61,12 @@ class AuthorController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $author = Author::findOrFail($id);
+        $author->name = $request->name;
+        $author->nationality = $request->nationality;
+        $author->birth_date = $request->birth_date;
+        $author->save();
+        return redirect()->route('authors.index');
     }
 
     /**
@@ -68,12 +74,8 @@ class AuthorController extends Controller
      */
     public function destroy(string $id)
     {
-        $author = new Author();
-        $author = Author::find($id);
-
-        if ($author) {
-            $author->delete();
-            return redirect()->route('authors.index');
-        }
+        $author = Author::findOrFail($id);
+        $author->delete();
+        return redirect()->route('authors.index');
     }
 }

@@ -53,7 +53,7 @@
                     <td><strong>{{ $book->id }}</strong></td>
                     <td>{{ $book->title }}</td>         
                     <td>{{ $book->published_at }}</td>
-                    <td>{{ $author->genre }}</td>
+                    <td>{{ $book->genre }}</td>
                     <td>
                     <form action="{{ route('books.destroy', $book->id) }}" method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este autor?');">
                         @csrf

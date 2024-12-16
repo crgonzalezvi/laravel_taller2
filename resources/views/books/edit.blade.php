@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Edit Book</h1>
-    <form action="{{ route('books.update', $author->id) }}" method="post">
+    <form action="{{ route('books.update', $book->id) }}" method="post">
         @csrf
         @method('PUT')
         <label for="title">Titulo </label>
@@ -18,7 +18,7 @@
         <input type="text" name="published_at" id="published_at" value="{{ $book->published_at }}" required>
 
         <label for="genre">Genero</label>
-        <input type="text" name="genre" id="genre" value="{{ $book->genre }}" required>
+        {{-- <input type="text" name="genre" id="genre" value="{{ $book->genre }}" required> --}}
 
         <button type="submit">Guardar Cambio</button>
     </form>

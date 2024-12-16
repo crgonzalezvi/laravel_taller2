@@ -43,7 +43,7 @@
                 <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Nacionality</th>
+                    <th scope="col">nationality</th>
                     <th scope="col">Birth_Date</th>
                     <th scope="col">Borrar</th>
                     <th scope="col">Modificar</th> 
@@ -54,7 +54,7 @@
                 <tr>
                     <td><strong>{{ $author->id }}</strong></td>
                     <td>{{ $author->name }}</td>         
-                    <td>{{ $author->nacionality }}</td>
+                    <td>{{ $author->nationality }}</td>
                     <td>{{ $author->birth_date }}</td>
                     <td>
                     <form action="{{ route('authors.destroy', $author->id) }}" method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este autor?');">

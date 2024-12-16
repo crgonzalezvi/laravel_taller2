@@ -18,20 +18,20 @@
         }
     </style>
 
-    <h1>Authors</h1>
+    <h1>Books</h1>
     <br>
     <div class="row">
         <div class="col-3">
-            <form action="{{route('authors.store')}}" method="post">
+            <form action="{{route('books.store')}}" method="post">
                 @csrf 
-                <label for="name"><strong>Nombre:</strong></label>
-                <input type="text" class="form-control" name="name" id="name">
+                <label for="title"><strong>Titulo del libro:</strong></label>
+                <input type="text" class="form-control" name="title" id="title">
                 <br>
-                <label for="nationality"><strong>Nacionalidad:</strong></label> 
-                <input type="text" class="form-control" name="nationality" id="nationality">
+                <label for="published_at"><strong>Fecha de publicación:</strong></label> 
+                <input type="date" class="form-control" name="published_at" id="published_at">
                 <br>
-                <label for="birth_date"><strong>Fecha de nacimiento:</strong></label> 
-                <input type="date" class="form-control" name="birth_date" id="birth_date">
+                <label for="genre"><strong>Genero:</strong></label> 
+                <input type="text" class="form-control" name="genre" id="genre">
                 <br>
                 <button type="submit">Guardar</button>
             </form>
@@ -42,28 +42,26 @@
                 <thead>
                 <tr>
                     <th scope="col">Id</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">nationality</th>
-                    <th scope="col">Birth_Date</th>
-                    <th scope="col">Borrar</th>
-                    <th scope="col">Modificar</th> 
+                    <th scope="col">Titulo</th>
+                    <th scope="col">Fecha de publicación</th>
+                    <th scope="col">Genero</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($authors as $author)
+                @foreach ($books as $book)
                 <tr>
-                    <td><strong>{{ $author->id }}</strong></td>
-                    <td>{{ $author->name }}</td>         
-                    <td>{{ $author->nationality }}</td>
-                    <td>{{ $author->birth_date }}</td>
+                    <td><strong>{{ $book->id }}</strong></td>
+                    <td>{{ $book->title }}</td>         
+                    <td>{{ $book->published_at }}</td>
+                    <td>{{ $author->genre }}</td>
                     <td>
-                    <form action="{{ route('authors.destroy', $author->id) }}" method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este autor?');">
+                    <form action="{{ route('books.destroy', $book->id) }}" method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este autor?');">
                         @csrf
                         @method('delete')
                         <button type="submit">Eliminar</button>
                     </form>
                     <td>
-                        <form action="{{ route('authors.edit',$author->id)}}">
+                        <form action="{{ route('books.edit',$book->id)}}">
                             @csrf
                             @method('edit')
                             <button type="submit">Editar</button>

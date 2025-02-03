@@ -30,3 +30,22 @@ Route::delete('books/{id}', [BookController::class, 'destroy'])->name('books.des
 Route::get('/', function (){
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//////////////PROTEGER RUTAS DEPENDIENDO ROL//////////////////////////////
+Route::middleware('auth','role:estudiante')->group(function () {
+    Route::get('/estudiante', function (){
+        return "estudiante";
+
+    });
+});
+Route::middleware('auth','role:docente')->group(function () {
+    Route::get('/docente', function (){
+        return "docente";
+
+    });
+});
+/////////////////////////////////////////////////////////////////////////

@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Patient;
 
 class RegisterController extends Controller
 {
@@ -63,10 +64,24 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'tipo_documento' => $data['tipo_documento'],
+            'documento' => $data['documento'],
+            'telefono' => $data['telefono'],
             'password' => Hash::make($data['password']),
+            'role_id' => 4, // Asignar el valor predeterminado directamente
         ]);
+
+        // Crear el paciente asociado al usuario recién creado
+        $patient = new Patient();
+        $patient->birthdate = $data['birthdate'];
+        $patient->gender = $data['gender'];
+        $patient->adress = $data['adress'];
+        $patient->user_id = $user->id; // Relación con el usuario recién creado
+        $patient->save(); // Guardar el paciente
+
+        return $user;
     }
 }
